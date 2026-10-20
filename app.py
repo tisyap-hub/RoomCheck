@@ -32,7 +32,7 @@ st.set_page_config(
 
 with st.sidebar:
 
-    st.title("🏫 RoomCheck")
+    st.title("🏫 RoomCheck — Version 2")
 
     st.write(
         "Classroom timetable conflict detector."
