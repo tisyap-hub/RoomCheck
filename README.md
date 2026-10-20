@@ -58,3 +58,38 @@ RoomCheck/
 ├── requirements.txt
 ├── .gitignore
 └── README.md
+
+## Running RoomCheck with Docker
+
+### Prerequisites
+- Docker Desktop installed and running.
+
+### Build the Docker image
+```bash
+docker build -t roomcheck:local .
+```
+
+### Run the container
+```bash
+docker run -d --name roomcheck-container -p 8501:8501 roomcheck:local
+```
+
+### Access the application
+Open your browser and visit:
+
+http://localhost:8501
+
+### Stop the container
+```bash
+docker stop roomcheck-container
+```
+
+### Start the container again
+```bash
+docker start roomcheck-container
+```
+
+### Run tests
+```bash
+python -m pytest -v
+```
