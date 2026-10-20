@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: roomcheck
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: roomcheck
+  template:
+    metadata:
+      labels:
+        app: roomcheck
+    spec:
+      imagePullSecrets:
+        - name: ecr-registry
+      containers:
+        - name: roomcheck
+          image: IMAGE_PLACEHOLDER
+          ports:
+            - containerPort: 8501
+          readinessProbe:
+            httpGet:
+              path: /_stcore/health
+              port: 8501
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "1"
+              memory: "1Gi"
